@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -31,7 +31,7 @@ Route::middleware('auth')
 
         Route::resource('posts', 'PostController');
 
-        //Route::resource('tags','TagController')->only(['show']);
+        Route::resource('tags','TagController')->only(['show']);
     });
 
     Route::get('{any?}' , function(){

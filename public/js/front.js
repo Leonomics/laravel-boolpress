@@ -1928,7 +1928,49 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    PostCard: _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      title: 'Bentornato JS',
+      posts: [],
+      currentPage: 1,
+      lastPage: 0,
+      total: 0
+    };
+  },
+  methods: {
+    fetchPosts: function fetchPosts() {
+      var _this = this;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/posts', {
+        params: {
+          page: page
+        }
+      }).then(function (res) {
+        //console.log(res.data)
+        var _res$data$result = res.data.result,
+          data = _res$data$result.data,
+          current_page = _res$data$result.current_page,
+          last_page = _res$data$result.last_page,
+          total = _res$data$result.total;
+        _this.posts = data;
+        _this.lastPage = last_page;
+        _this.currentPage = current_page;
+        _this.total = total;
+        // const { posts } = res.data
+        // this.posts = posts
+      });
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.fetchPosts();
+  }
+});
 
 /***/ }),
 
@@ -1986,49 +2028,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    PostCard: _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {
-      title: 'Bentornato JS',
-      posts: [],
-      currentPage: 1,
-      lastPage: 0,
-      total: 0
-    };
-  },
-  methods: {
-    fetchPosts: function fetchPosts() {
-      var _this = this;
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/api/posts', {
-        params: {
-          page: page
-        }
-      }).then(function (res) {
-        //console.log(res.data)
-        var _res$data$result = res.data.result,
-          data = _res$data$result.data,
-          current_page = _res$data$result.current_page,
-          last_page = _res$data$result.last_page,
-          total = _res$data$result.total;
-        _this.posts = data;
-        _this.lastPage = last_page;
-        _this.currentPage = current_page;
-        _this.total = total;
-        // const { posts } = res.data
-        // this.posts = posts
-      });
-    }
-  },
-  beforeMount: function beforeMount() {
-    this.fetchPosts();
-  }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -2077,15 +2077,66 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", [_c("section", [_c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("\n                Blog\n            ")])])]), _vm._v(" "), _c("section")]);
-}];
+  }, [_c("section", {
+    staticClass: "mb-12"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("h1", [_vm._v(_vm._s(_vm.title))])])]), _vm._v(" "), _c("section", {
+    staticClass: "my-12"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "grid grid-cols-3 gap-8"
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("PostCard", {
+      key: post.id,
+      attrs: {
+        post: post
+      }
+    });
+  }), 1)]), _vm._v(" "), _c("div", {
+    staticClass: "container pt-12"
+  }, [_c("ul", {
+    staticClass: "flex gap-6 justify-center"
+  }, [_vm.currentPage !== 1 ? _c("li", {
+    "class": {
+      "w-8 h-8 flex items-center justify-center rounded-full": true,
+      "bg-gray-100 cursor-pointer hover:bg-amber-300": true
+    },
+    on: {
+      click: function click($event) {
+        return _vm.fetchPosts(1);
+      }
+    }
+  }, [_vm._v("\n      ...\n      ")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.lastPage, function (page) {
+    return _c("li", {
+      key: page,
+      "class": {
+        "w-8 h-8 flex items-center justify-center rounded-full": true,
+        "bg-amber-400": page === _vm.currentPage,
+        "bg-gray-100 cursor-pointer hover:bg-amber-300": page !== _vm.currentPage
+      },
+      on: {
+        click: function click($event) {
+          return _vm.fetchPosts(page);
+        }
+      }
+    }, [_vm._v(_vm._s(page))]);
+  }), _vm._v(" "), _vm.currentPage !== _vm.lastPage ? _c("li", {
+    "class": {
+      "w-8 h-8 flex items-center justify-center rounded-full": true,
+      "bg-gray-100 cursor-pointer hover:bg-amber-300": true
+    },
+    on: {
+      click: function click($event) {
+        return _vm.fetchPosts(_vm.lastPage);
+      }
+    }
+  }, [_vm._v("\n      ...\n      ")]) : _vm._e()], 2)])])])]), _vm._v(" "), _c("section")]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -18219,11 +18270,11 @@ var routes = [{
   component: _pages_ContactUs_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {
   path: '/chi-siamo',
-  name: 'chi-siamo',
+  name: 'about-us',
   component: _pages_ChiSiamo_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/blog',
-  name: 'blog',
+  name: 'posts.index',
   component: _pages_Blog_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);

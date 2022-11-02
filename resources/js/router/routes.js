@@ -16,12 +16,12 @@ const routes = [
     },
     {
         path: '/chi-siamo',
-        name: 'chi-siamo',
+        name: 'about-us',
         component: ChiSiamo,
     },
     {
         path: '/blog',
-        name: 'blog',
+        name: 'posts.index',
         component: Blog,
     }
 ];
