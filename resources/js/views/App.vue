@@ -1,6 +1,7 @@
 <template>
     <div>
-      <section class="mb-12">
+      <router-view></router-view>
+      <!--<section class="mb-12">
         <div class="container">
           <h1>{{ title }}</h1>
 
@@ -38,7 +39,7 @@
           </li>
           </ul>
         </div>
-      </section>
+      </section>-->
 
     </div>
   </template>
@@ -65,7 +66,7 @@
               page: page
             }
           }).then((res) => {
-            console.log(res.data)
+            //console.log(res.data)
             const { data, current_page, last_page, total } = res.data.result
             this.posts = data
             this.lastPage = last_page
