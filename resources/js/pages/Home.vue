@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Navbar />
         <section>
             <div class="container">
                 <h1>{{title}}</h1>
@@ -11,11 +12,12 @@
 
 <script>
     export default{
+
         data(){
             return{
                 title:'Home page'
             }
-        }
+        },
     }
 </script>
 

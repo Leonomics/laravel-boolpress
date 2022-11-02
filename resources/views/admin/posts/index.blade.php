@@ -8,7 +8,7 @@
       <h1>Elenco di posts:</h1>
     </div>
     <div class="col-4 text-left d-flex justify-content-end align-items-center">
-      <a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-primary btn-sm">Nuovo Post</a>
+      <a href="{{ route('admin.posts.create', $post) }}" type="button" class="btn btn-primary btn-sm">Nuovo Post</a>
     </div>
   </div>
 </div>
