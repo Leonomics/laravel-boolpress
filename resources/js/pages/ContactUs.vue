@@ -5,14 +5,26 @@
                 <h1>
                     Contatti
                 </h1>
+                <p>Compila il form per contattarci</p>
             </div>
         </section>
-        <section></section>
+        <section>
+            <div class="container py-12">
+        <LeadForm>
+        </LeadForm>
+      </div>
+        </section>
     </div>
 </template>
 
 <script>
-    export default{
-
+import LeadForm from '../components/LeadForm.vue';
+  export default {
+    components: {
+      LeadForm
     }
+  }
 </script>
+
+<style lang="scss" scoped>
+</style>

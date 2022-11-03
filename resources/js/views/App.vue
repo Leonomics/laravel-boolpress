@@ -1,21 +1,17 @@
 <template>
-    <div>
-      <Navbar/>
-      <router-view></router-view>
+  <Layout>
+    <router-view></router-view>
+  </Layout>
+</template>
 
-    </div>
-  </template>
+<script>
+  import Layout from '../layouts/Default.vue'
+  export default {
+    components: {
+      Layout
+    },
+  }
+</script>
 
-  <script>
-    import Navbar from '../components/Navbar.vue'
-    export default {
-
-        components:
-        {
-          Navbar
-        }
-      }
-  </script>
-
-  <style lang="scss" scoped>
-  </style>
+<style lang="scss" scoped>
+</style>
