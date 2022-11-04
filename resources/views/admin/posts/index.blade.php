@@ -48,13 +48,14 @@
               <a href="{{ route('admin.posts.show',$post) }}" type="button" class="btn btn-secondary btn-sm">vedi</a>
             </td>
             <td>
-              <form action="{{ route('admin.posts.destroy',$post) }}" method="POST">
+              {{--<form action="{{ route('admin.posts.destroy',$post) }}" method="POST">
 
                 @csrf
                 @method('DELETE')
 
                 <input type="submit" value="Elimina" class="btn btn-danger btn-sm">
-              </form>
+              </form>--}}
+              <delete-post-button id="{{$post->id}}" title="{{$post->title}}"></delete-post-button>
             </td>
           </tr>
 

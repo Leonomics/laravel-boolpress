@@ -1,26 +1,23 @@
 <template>
     <div>
-        <Navbar />
-        <section>
-            <div class="container">
-                <h1>{{title}}</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, totam.</p>
-            </div>
-        </section>
+      <section>
+        <div class="container">
+          <h1>{{ title }}</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, quaerat!</p>
+        </div>
+      </section>
     </div>
-</template>
+  </template>
 
-<script>
-    export default{
-
-        data(){
-            return{
-                title:'Home page'
-            }
-        },
+  <script>
+    export default {
+      data() {
+        return {
+          title: 'Home page'
+        }
+      }
     }
-</script>
+  </script>
 
-<style>
-
-</style>
+  <style lang="scss" scoped>
+  </style>
